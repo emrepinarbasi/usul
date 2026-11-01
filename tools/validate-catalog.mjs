@@ -41,8 +41,10 @@ for (const pattern of catalog.patterns) {
   assert([2, 4, 8, 16].includes(pattern.denominator), `${pattern.id}: mertebe geçersiz`);
   assert(Number.isInteger(pattern.cycleBars) && pattern.cycleBars > 0,
     `${pattern.id}: ölçü çevrimi geçersiz`);
-  assert(["ismail_hakki_ozkan", "hursit_ungay"].includes(pattern.source),
-    `${pattern.id}: kaynak geçersiz`);
+  assert(typeof pattern.source === "string" && /^[a-z0-9_.-]{2,80}$/.test(pattern.source),
+    `${pattern.id}: kaynak kimliği geçersiz`);
+  assert(typeof pattern.sourceDisplayName === "string" && pattern.sourceDisplayName.trim().length > 0,
+    `${pattern.id}: görünen kaynak adı geçersiz`);
   assert(Array.isArray(pattern.hits) && pattern.hits.length > 0,
     `${pattern.id}: vuruş bulunamadı`);
 

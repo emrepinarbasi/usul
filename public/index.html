@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061827">
+  <meta name="description" content="Usûl; Türk mûsikîsi usûllerini kaynaklarına sadık nota gösterimi, kudüm ve bendir sesleriyle çalışmaya yardımcı olan Android uygulamasıdır.">
+  <meta property="og:title" content="Usûl — Ritmin inceliği">
+  <meta property="og:description" content="Türk mûsikîsi usûlleri, velveleler, canlı nota takibi ve eser eşlikçisi.">
+  <meta property="og:image" content="assets/screens/usul-nota.png">
+  <title>Usûl — Ritmin inceliği</title>
+  <link rel="icon" href="assets/usul-logo.png">
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <header class="site-header">
+    <a class="brand" href="#ust" aria-label="Usûl ana sayfa">
+      <img src="assets/usul-logo.png" alt="" width="48" height="48">
+      <span>Usûl</span>
+    </a>
+    <nav aria-label="Ana menü">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#kaynaklar">Kaynaklar</a>
+      <a href="#gorunumler">Görünümler</a>
+      <a href="#veri">Veri durumu</a>
+    </nav>
+    <a class="small-button" href="https://github.com/emrepinarbasi/usul">GitHub</a>
+  </header>
+
+  <main id="icerik">
+    <section class="hero" id="ust">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Türk mûsikîsi için ritim çalışma ortamı</p>
+        <h1>Ritmin <em>inceliği</em></h1>
+        <p class="hero-text">Usûlleri yalnızca saymaz; kaynaktaki heceyi, nota çizgisini ve çalınacak sesi ayrı ayrı koruyarak görünür, işitilir ve takip edilebilir hâle getirir.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="mailto:emrepinarbasi@gmail.com?subject=Us%C3%BBl%20Android%20erken%20eri%C5%9Fim">Android erken erişim</a>
+          <a class="text-button" href="#gorunumler">Uygulamayı incele <span aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="hero-stats" aria-label="Katalog özeti">
+          <div><dt id="pattern-count">—</dt><dd>usûl kaydı</dd></div>
+          <div><dt id="source-count">—</dt><dd>kaynak</dd></div>
+          <div><dt>20–600</dt><dd>BPM</dd></div>
+        </dl>
+      </div>
+      <div class="hero-visual reveal" aria-label="Usûl Android uygulaması ana ekranı">
+        <div class="halo"></div>
+        <div class="phone-frame">
+          <img src="assets/screens/ana-ekran.png" alt="Usûl uygulamasında metronom ana ekranı">
+        </div>
+        <span class="floating-note note-one">Düm</span>
+        <span class="floating-note note-two">Tek</span>
+        <span class="floating-note note-three">Te · Ke</span>
+      </div>
+    </section>
+
+    <section class="manifest-strip" aria-label="Canlı katalog bilgisi">
+      <span class="pulse" aria-hidden="true"></span>
+      <strong>Canlı usûl kataloğu</strong>
+      <span id="manifest-summary">Sürüm bilgisi alınıyor…</span>
+      <a href="veri/manifest.json">Manifesti görüntüle</a>
+    </section>
+
+    <section class="section" id="ozellikler">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Çalış, dinle, gör</p>
+        <h2>Metronomdan fazlası</h2>
+        <p>Görsel vuruş takibi, gerçek çalgı sesleri ve programlanabilir eser akışı aynı çalışma düzeninde buluşur.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <span class="card-number">01</span>
+          <h3>Kaynağa sadık gösterim</h3>
+          <p>Hece, nota çizgisi ve ses birbirinden bağımsız saklanır. Te, Ke, Tâ ve Hek konumları adlarına göre tahmin edilmez.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-number">02</span>
+          <h3>Kudüm ve bendir</h3>
+          <p>Düm–Tek vuruşlarını doğal örneklerle dinleyin; reverb, ses seviyesi, ışık çerçevesi ve titreşimi isteğinize göre ayarlayın.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-number">03</span>
+          <h3>Canlı nota takibi</h3>
+          <p>Çalınan nota ve hece kırmızı vurguyla eşzamanlı izlenir. Büyük usûller dengeli satırlara bölünerek ekrana sığar.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-number">04</span>
+          <h3>Eşlikçi</h3>
+          <p>Peşrev, Saz Semâîsi, Saz Eseri ve Şarkı için bölüm, usûl, tempo ve ölçü sayılarını ayrı ayrı programlayın.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-number">05</span>
+          <h3>Akort aleti</h3>
+          <p>50–2000 Hz aralığında kromatik dinleme, cent göstergesi ve icra düzeninize göre değiştirilebilir A4 referansı.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-number">06</span>
+          <h3>Güvenli veri güncellemesi</h3>
+          <p>Yeni düzeltmeler uygulama açılırken denetlenir; bütünlük doğrulamasını geçen katalog atomik olarak kurulur ve çevrimdışı saklanır.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section source-section" id="kaynaklar">
+      <div class="source-copy reveal">
+        <p class="eyebrow">Aynı usûl, farklı kaynaklar</p>
+        <h2>Yazılı mirası tek kalıba zorlamadan</h2>
+        <p>İsmail Hakkı Özkan ve Hurşit Ungay katalogları kendi hece, mertebe ve çizgi yerleşimleriyle ayrı tutulur. Kullanıcı tek bir kaynağı ya da bütün kaynakları gösterebilir.</p>
+        <p>Usûl Veri uygulamasıyla yeni bir kitap veya araştırmacı kaynağı eklendiğinde Android uygulaması yeni kaynak seçeneğini APK güncellemesi istemeden oluşturur.</p>
+      </div>
+      <div class="source-list reveal" id="source-list" aria-live="polite">
+        <div class="source-row"><span>İsmail Hakkı Özkan Versiyonu</span><strong>yükleniyor</strong></div>
+        <div class="source-row"><span>Hurşit Ungay Versiyonu</span><strong>yükleniyor</strong></div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gorunumler">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Uygulama içinden</p>
+        <h2>Vuruşla birlikte yaşayan nota</h2>
+      </div>
+      <div class="gallery">
+        <button class="shot shot-tall reveal" data-image="assets/screens/usul-nota.png" data-alt="Usûl nota gösterimi">
+          <img src="assets/screens/usul-nota.png" alt="Usûl nota gösterimi" loading="lazy">
+          <span>Canlı nota görünümü</span>
+        </button>
+        <button class="shot reveal" data-image="assets/screens/ozkan-hafif.png" data-alt="Özkan kaynağında Hafif usûlü">
+          <img src="assets/screens/ozkan-hafif.png" alt="Özkan kaynağında Hafif usûlü" loading="lazy">
+          <span>Özkan kataloğu</span>
+        </button>
+        <button class="shot reveal" data-image="assets/screens/ungay-usul.png" data-alt="Ungay kaynağında usûl görünümü">
+          <img src="assets/screens/ungay-usul.png" alt="Ungay kaynağında usûl görünümü" loading="lazy">
+          <span>Ungay kataloğu</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section data-section" id="veri">
+      <div class="data-panel reveal">
+        <div>
+          <p class="eyebrow">Şeffaf ve denetlenebilir</p>
+          <h2>Güncel katalog durumu</h2>
+          <p>Android uygulaması önce <code>usul.sazusoz.com</code> adresini, ardından GitHub Pages ve ham GitHub dosyalarını dener. SHA-256, dosya boyutu, kayıt sayısı ve bütün usûl süreleri doğrulanmadan hiçbir katalog etkinleştirilmez.</p>
+        </div>
+        <dl class="status-grid">
+          <div><dt>Katalog</dt><dd id="catalog-version">—</dd></div>
+          <div><dt>Yayın</dt><dd id="published-at">—</dd></div>
+          <div><dt>Doğrulama</dt><dd id="catalog-state">Denetleniyor</dd></div>
+          <div><dt>Kayıt</dt><dd id="record-count">—</dd></div>
+        </dl>
+        <div class="data-actions">
+          <a class="primary-button" href="veri/manifest.json">Manifest</a>
+          <a class="text-button" href="https://github.com/emrepinarbasi/usul/tree/main/public/veri">Sürüm dosyaları ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <img src="assets/usul-logo.png" alt="" width="120" height="120">
+      <p class="eyebrow">Usûl · Ritmin inceliği</p>
+      <h2>Dinleyerek, görerek ve tekrar ederek çalışın.</h2>
+      <p>Android erken erişim için Google Play hesabınızda kullandığınız e-posta adresini iletmeniz yeterli.</p>
+      <a class="primary-button" href="mailto:emrepinarbasi@gmail.com?subject=Us%C3%BBl%20Android%20erken%20eri%C5%9Fim">emrepinarbasi@gmail.com</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>Emre Pınarbaşı tarafından hazırlanmıştır · 2026</span>
+    <div><a href="gizlilik.html">Gizlilik</a><a href="https://github.com/emrepinarbasi/usul">Kaynak depo</a></div>
+  </footer>
+
+  <dialog id="image-dialog" aria-label="Ekran görüntüsü">
+    <button class="dialog-close" aria-label="Kapat">×</button>
+    <img src="" alt="">
+  </dialog>
+</body>
+</html>

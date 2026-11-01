@@ -1,14 +1,14 @@
 {
   "format": "Usul Catalog Manifest v1",
   "schemaVersion": 1,
-  "catalogVersion": 1,
-  "publishedAt": "2026-11-01T16:27:26+03:00",
+  "catalogVersion": 2,
+  "publishedAt": "2026-11-01T16:38:28+03:00",
   "minimumAppVersionCode": 1,
-  "releaseNotes": "İlk doğrulanmış uzaktan usûl kataloğu.",
+  "releaseNotes": "Dinamik kaynak adları ve yeni kaynak ekleme desteği.",
   "catalog": {
-    "url": "katalog/usul-katalog-v000001.json",
-    "sha256": "db8cf8ddc282de1c0ba374346959f1bbdbb705df070be4984a762f52a841b89c",
-    "size": 554150,
+    "url": "katalog/usul-katalog-v000002.json",
+    "sha256": "4772745341581c442cf739a280e974cdeebf02988cd6088bb19af609550d1b7e",
+    "size": 567250,
     "recordCount": 262
   }
 }
