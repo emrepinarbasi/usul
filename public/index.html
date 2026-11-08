@@ -2,177 +2,125 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#061827">
-  <meta name="description" content="Usûl; Türk mûsikîsi usûllerini kaynaklarına sadık nota gösterimi, kudüm ve bendir sesleriyle çalışmaya yardımcı olan Android uygulamasıdır.">
+  <meta name="description" content="Usûl; Türk mûsikîsi usûllerini kaynaklarına sadık nota gösterimi, kudüm ve bendir sesleriyle çalıştıran web uygulamasıdır.">
   <meta property="og:title" content="Usûl — Ritmin inceliği">
   <meta property="og:description" content="Türk mûsikîsi usûlleri, velveleler, canlı nota takibi ve eser eşlikçisi.">
-  <meta property="og:image" content="assets/screens/usul-nota.png">
+  <meta property="og:image" content="assets/usul-logo.png">
   <title>Usûl — Ritmin inceliği</title>
   <link rel="icon" href="assets/usul-logo.png">
+  <link rel="apple-touch-icon" href="assets/usul-logo.png">
+  <link rel="manifest" href="app.webmanifest">
   <link rel="stylesheet" href="assets/site.css">
   <script defer src="assets/site.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#icerik">İçeriğe geç</a>
-  <header class="site-header">
-    <a class="brand" href="#ust" aria-label="Usûl ana sayfa">
-      <img src="assets/usul-logo.png" alt="" width="48" height="48">
-      <span>Usûl</span>
-    </a>
-    <nav aria-label="Ana menü">
-      <a href="#ozellikler">Özellikler</a>
-      <a href="#kaynaklar">Kaynaklar</a>
-      <a href="#gorunumler">Görünümler</a>
-      <a href="#veri">Veri durumu</a>
-    </nav>
-    <a class="small-button" href="#veri">Katalog v2</a>
-  </header>
-
-  <main id="icerik">
-    <section class="hero" id="ust">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Türk mûsikîsi için ritim çalışma ortamı</p>
-        <h1>Ritmin <em>inceliği</em></h1>
-        <p class="hero-text">Usûlleri yalnızca saymaz; kaynaktaki heceyi, nota çizgisini ve çalınacak sesi ayrı ayrı koruyarak görünür, işitilir ve takip edilebilir hâle getirir.</p>
-        <div class="hero-actions">
-          <a class="primary-button" href="mailto:emrepinarbasi@gmail.com?subject=Us%C3%BBl%20Android%20erken%20eri%C5%9Fim">Android erken erişim</a>
-          <a class="text-button" href="#gorunumler">Uygulamayı incele <span aria-hidden="true">↓</span></a>
-        </div>
-        <dl class="hero-stats" aria-label="Katalog özeti">
-          <div><dt id="pattern-count">—</dt><dd>usûl kaydı</dd></div>
-          <div><dt id="source-count">—</dt><dd>kaynak</dd></div>
-          <div><dt>20–600</dt><dd>BPM</dd></div>
-        </dl>
-      </div>
-      <div class="hero-visual reveal" aria-label="Usûl Android uygulaması ana ekranı">
-        <div class="halo"></div>
-        <div class="phone-frame">
-          <img src="assets/screens/ana-ekran.png" alt="Usûl uygulamasında metronom ana ekranı">
-        </div>
-        <span class="floating-note note-one">Düm</span>
-        <span class="floating-note note-two">Tek</span>
-        <span class="floating-note note-three">Te · Ke</span>
-      </div>
-    </section>
-
-    <section class="manifest-strip" aria-label="Canlı katalog bilgisi">
-      <span class="pulse" aria-hidden="true"></span>
-      <strong>Canlı usûl kataloğu</strong>
-      <span id="manifest-summary">Sürüm bilgisi alınıyor…</span>
-      <a href="veri/manifest.json">Manifesti görüntüle</a>
-    </section>
-
-    <section class="section" id="ozellikler">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Çalış, dinle, gör</p>
-        <h2>Metronomdan fazlası</h2>
-        <p>Görsel vuruş takibi, gerçek çalgı sesleri ve programlanabilir eser akışı aynı çalışma düzeninde buluşur.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="feature-card reveal">
-          <span class="card-number">01</span>
-          <h3>Kaynağa sadık gösterim</h3>
-          <p>Hece, nota çizgisi ve ses birbirinden bağımsız saklanır. Te, Ke, Tâ ve Hek konumları adlarına göre tahmin edilmez.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="card-number">02</span>
-          <h3>Kudüm ve bendir</h3>
-          <p>Düm–Tek vuruşlarını doğal örneklerle dinleyin; reverb, ses seviyesi, ışık çerçevesi ve titreşimi isteğinize göre ayarlayın.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="card-number">03</span>
-          <h3>Canlı nota takibi</h3>
-          <p>Çalınan nota ve hece kırmızı vurguyla eşzamanlı izlenir. Büyük usûller dengeli satırlara bölünerek ekrana sığar.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="card-number">04</span>
-          <h3>Eşlikçi</h3>
-          <p>Peşrev, Saz Semâîsi, Saz Eseri ve Şarkı için bölüm, usûl, tempo ve ölçü sayılarını ayrı ayrı programlayın.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="card-number">05</span>
-          <h3>Akort aleti</h3>
-          <p>50–2000 Hz aralığında kromatik dinleme, cent göstergesi ve icra düzeninize göre değiştirilebilir A4 referansı.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span class="card-number">06</span>
-          <h3>Güvenli veri güncellemesi</h3>
-          <p>Yeni düzeltmeler uygulama açılırken denetlenir; bütünlük doğrulamasını geçen katalog atomik olarak kurulur ve çevrimdışı saklanır.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section source-section" id="kaynaklar">
-      <div class="source-copy reveal">
-        <p class="eyebrow">Aynı usûl, farklı kaynaklar</p>
-        <h2>Yazılı mirası tek kalıba zorlamadan</h2>
-        <p>İsmail Hakkı Özkan ve Hurşit Ungay katalogları kendi hece, mertebe ve çizgi yerleşimleriyle ayrı tutulur. Kullanıcı tek bir kaynağı ya da bütün kaynakları gösterebilir.</p>
-        <p>Usûl Veri uygulamasıyla yeni bir kitap veya araştırmacı kaynağı eklendiğinde Android uygulaması yeni kaynak seçeneğini APK güncellemesi istemeden oluşturur.</p>
-      </div>
-      <div class="source-list reveal" id="source-list" aria-live="polite">
-        <div class="source-row"><span>İsmail Hakkı Özkan Versiyonu</span><strong>yükleniyor</strong></div>
-        <div class="source-row"><span>Hurşit Ungay Versiyonu</span><strong>yükleniyor</strong></div>
-      </div>
-    </section>
-
-    <section class="section gallery-section" id="gorunumler">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Uygulama içinden</p>
-        <h2>Vuruşla birlikte yaşayan nota</h2>
-      </div>
-      <div class="gallery">
-        <button class="shot shot-tall reveal" data-image="assets/screens/usul-nota.png" data-alt="Usûl nota gösterimi">
-          <img src="assets/screens/usul-nota.png" alt="Usûl nota gösterimi" loading="lazy">
-          <span>Canlı nota görünümü</span>
-        </button>
-        <button class="shot reveal" data-image="assets/screens/ozkan-hafif.png" data-alt="Özkan kaynağında Hafif usûlü">
-          <img src="assets/screens/ozkan-hafif.png" alt="Özkan kaynağında Hafif usûlü" loading="lazy">
-          <span>Özkan kataloğu</span>
-        </button>
-        <button class="shot reveal" data-image="assets/screens/ungay-usul.png" data-alt="Ungay kaynağında usûl görünümü">
-          <img src="assets/screens/ungay-usul.png" alt="Ungay kaynağında usûl görünümü" loading="lazy">
-          <span>Ungay kataloğu</span>
-        </button>
-      </div>
-    </section>
-
-    <section class="section data-section" id="veri">
-      <div class="data-panel reveal">
+  <a class="skip-link" href="#ana-icerik">İçeriğe geç</a>
+  <div class="app-shell" id="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup" aria-label="Usûl — Ritmin inceliği">
+        <img src="assets/usul-logo.png" alt="" width="44" height="44">
         <div>
-          <p class="eyebrow">Şeffaf ve denetlenebilir</p>
-          <h2>Güncel katalog durumu</h2>
-          <p>Android uygulaması önce <code>usul.sazusoz.com</code> adresini, ardından iki güvenli yedek adresi dener. SHA-256, dosya boyutu, kayıt sayısı ve bütün usûl süreleri doğrulanmadan hiçbir katalog etkinleştirilmez.</p>
-        </div>
-        <dl class="status-grid">
-          <div><dt>Katalog</dt><dd id="catalog-version">—</dd></div>
-          <div><dt>Yayın</dt><dd id="published-at">—</dd></div>
-          <div><dt>Doğrulama</dt><dd id="catalog-state">Denetleniyor</dd></div>
-          <div><dt>Kayıt</dt><dd id="record-count">—</dd></div>
-        </dl>
-        <div class="data-actions">
-          <a class="primary-button" href="veri/manifest.json">Manifest</a>
+          <h1>Usûl</h1>
+          <div class="tagline"><i></i><span>Ritmin inceliği</span><i></i></div>
         </div>
       </div>
-    </section>
+      <div class="header-actions">
+        <button class="icon-button" id="settings-top" type="button" aria-label="Ayarları aç" title="Ayarlar">⚙</button>
+        <button class="icon-button play-icon" id="play-top" type="button" aria-label="Başlat" title="Başlat">▶</button>
+      </div>
+    </header>
 
-    <section class="closing-section">
-      <img src="assets/usul-logo.png" alt="" width="120" height="120">
-      <p class="eyebrow">Usûl · Ritmin inceliği</p>
-      <h2>Dinleyerek, görerek ve tekrar ederek çalışın.</h2>
-      <p>Android erken erişim için Google Play hesabınızda kullandığınız e-posta adresini iletmeniz yeterli.</p>
-      <a class="primary-button" href="mailto:emrepinarbasi@gmail.com?subject=Us%C3%BBl%20Android%20erken%20eri%C5%9Fim">emrepinarbasi@gmail.com</a>
-    </section>
-  </main>
+    <div class="app-workspace">
+      <main id="ana-icerik" class="screen-host">
+        <section class="screen active" id="metronome-screen" aria-labelledby="selected-pattern-name">
+          <div class="metronome-layout">
+            <section class="notation-card glow-target" id="notation-card" aria-label="Usûl nota görünümü">
+              <div class="catalog-loading" id="catalog-loading"><span class="loading-mark"></span><strong>Usûl kataloğu yükleniyor…</strong></div>
+              <div class="notation-heading">
+                <div><span id="pattern-kind">Ana usûl</span><strong id="selected-pattern-name">Nîm Sofyân</strong></div>
+                <span id="pattern-meter">2/4</span>
+              </div>
+              <svg id="notation-svg" role="img" aria-label="Seçilen usûlün vuruşları"></svg>
+            </section>
 
-  <footer>
-    <span>Emre Pınarbaşı tarafından hazırlanmıştır · 2026</span>
-    <div><a href="gizlilik.html">Gizlilik</a></div>
-  </footer>
+            <section class="control-card" aria-label="Metronom denetimleri">
+              <div class="tempo-block">
+                <span class="tempo-name" id="tempo-name">Andante</span>
+                <div class="tempo-row">
+                  <button class="round-button" id="bpm-minus" type="button" aria-label="Tempoyu azalt">−</button>
+                  <div class="bpm-readout"><strong id="bpm-value">80</strong><span>B P M</span></div>
+                  <button class="round-button" id="bpm-plus" type="button" aria-label="Tempoyu artır">+</button>
+                </div>
+                <input id="bpm-slider" type="range" min="20" max="600" value="80" step="1" aria-label="Tempo">
+              </div>
+              <div class="control-divider"></div>
+              <div class="pattern-controls">
+                <div class="sound-tabs" role="group" aria-label="Ses seçimi">
+                  <button data-sound="kudum" class="selected" type="button">Kudüm</button>
+                  <button data-sound="bendir" type="button">Bendir</button>
+                  <button data-sound="usul" type="button">Usûl</button>
+                  <button data-sound="tiktak" type="button">Tik Tak</button>
+                </div>
+                <button class="pattern-picker-button" id="open-patterns" type="button">
+                  <span><small id="selection-kind">Ana usûl</small><strong id="selection-label">Nîm Sofyân • 2/4</strong><em id="selection-source">İsmail Hakkı Özkan Versiyonu</em></span><b aria-hidden="true">⌄</b>
+                </button>
+                <div class="transport-row">
+                  <button class="outline-button" id="tap-tempo" type="button">Dokunarak tempo</button>
+                  <button class="primary-button" id="play-main" type="button"><span>▶</span><b>Başlat</b></button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
 
-  <dialog id="image-dialog" aria-label="Ekran görüntüsü">
-    <button class="dialog-close" aria-label="Kapat">×</button>
-    <img src="" alt="">
+        <section class="screen" id="accompanist-screen" aria-labelledby="accompanist-title">
+          <div class="panel-page">
+            <div class="panel-title-row">
+              <div><span class="panel-icon">♫</span><div><h2 id="accompanist-title">Eşlikçi</h2><p>İcraya ölçü ölçü eşlik eder</p></div></div>
+              <button class="outline-button back-metronome" type="button">← Metronom</button>
+            </div>
+            <div class="form-tabs" id="work-type-tabs">
+              <button data-work="semai" type="button">Saz Semâîsi</button><button data-work="pesrev" type="button">Peşrev</button><button data-work="saz" class="selected" type="button">Saz Eseri</button><button data-work="sarki" type="button">Şarkı</button>
+            </div>
+            <div class="accompanist-grid">
+              <section class="plan-card"><h3 id="plan-title">Saz Eseri planı</h3><label>Bölüm sayısı <input id="section-count" type="number" min="1" max="12" value="3" inputmode="numeric"></label><p>Her bölümün usûlü, temposu ve ölçü sayısı ayrı ayarlanır.</p></section>
+              <div class="sections-grid" id="sections-grid"></div>
+              <section class="plan-card finish-card"><h3>Başlangıç ve bitiş</h3><label>Boş usûl <select id="intro-bars"><option value="0">Yok</option><option value="1" selected>1 ölçü</option><option value="2">2 ölçü</option></select></label><label>Bitiş <select id="ending-mode"><option value="direct">Doğrudan</option><option value="slow">Yavaşlayarak</option></select></label><label>Ses <select id="accompanist-sound"><option value="kudum">Kudüm</option><option value="bendir">Bendir</option><option value="usul">Usûl</option></select></label><button class="primary-button wide" id="accompanist-play" type="button"><span>▶</span><b>Eşliği başlat</b></button></section>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" id="settings-screen" aria-labelledby="settings-title">
+          <div class="panel-page settings-page">
+            <div class="panel-title-row"><div><span class="panel-icon">⚙</span><div><h2 id="settings-title">Ayarlar</h2><p>Görünüm, ses ve katalog</p></div></div><button class="outline-button back-metronome" type="button">← Metronom</button></div>
+            <div class="settings-grid">
+              <section class="settings-card"><h3>Usûl kaynakları</h3><div class="source-choice" id="source-choice"><button class="selected" data-source="all" type="button">Tüm kaynakları göster</button><button data-source="ismail_hakki_ozkan" type="button">İsmail Hakkı Özkan</button><button data-source="hursit_ungay" type="button">Hurşit Ungay</button></div></section>
+              <section class="settings-card"><h3>Ses</h3><label>Çıkış seviyesi <output id="gain-output">0 dB</output><input id="gain-slider" type="range" min="-12" max="6" value="0" step="1"></label><label>Ortam etkisi <output id="reverb-output">0%</output><input id="reverb-slider" type="range" min="0" max="30" value="0" step="1"></label></section>
+              <section class="settings-card"><h3>Vuruş geri bildirimi</h3><label class="switch-row"><span>Titreşimle takip</span><input id="vibration-toggle" type="checkbox" role="switch"></label><p id="vibration-note">Desteklenen telefonlarda titreşim süresi vuruş uzunluğuna göre değişir.</p><label>Işık etkisi <output id="glow-output">55%</output><input id="glow-slider" type="range" min="0" max="100" value="55" step="1"></label></section>
+              <section class="settings-card about-card"><h3>Hakkında</h3><p><i>Türk Musikisi Nazariyatı ve Usulleri — Kudüm Velveleleri</i> (İsmail Hakkı Özkan) ile <i>Türk Mûsikîsinde Usûller ve Kudüm</i> (Hurşit Ungay) kaynaklarından faydalanılmıştır.</p><p>Kontrolleri için Sayın Abdullah Kadir Özaydın’a teşekkür ederim.</p><p class="signature">Emre Pınarbaşı<br><span>tarafından hazırlanmıştır</span><br>2026</p><a href="gizlilik.html">Gizlilik politikası</a></section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="side-navigation" aria-label="Uygulama menüsü">
+        <button class="nav-button selected" data-screen="metronome" type="button"><span class="nav-icon">△</span><b>Metronom</b></button>
+        <button class="nav-button" data-screen="accompanist" type="button"><span class="nav-icon">♫</span><b>Eşlikçi</b></button>
+        <button class="nav-button" data-screen="settings" type="button"><span class="nav-icon">☼</span><b>Ayarlar</b></button>
+      </nav>
+    </div>
+  </div>
+
+  <dialog id="pattern-dialog" class="sheet-dialog">
+    <form method="dialog" class="dialog-shell">
+      <header><div><h2>Usûl seç</h2><p id="catalog-status">Katalog hazırlanıyor…</p></div><button value="cancel" class="dialog-close" aria-label="Kapat">×</button></header>
+      <div class="picker-tools"><input id="pattern-search" type="search" placeholder="Usûl veya hece ara" autocomplete="off"><div class="source-choice compact" id="dialog-source-choice"><button class="selected" data-source="all" type="button">Tümü</button><button data-source="ismail_hakki_ozkan" type="button">Özkan</button><button data-source="hursit_ungay" type="button">Ungay</button></div></div>
+      <div class="pattern-list" id="pattern-list" role="listbox" aria-label="Usûller"></div>
+    </form>
   </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>Bu uygulamanın çalışması için JavaScript etkin olmalıdır. <a href="gizlilik.html">Gizlilik politikası</a></noscript>
 </body>
 </html>

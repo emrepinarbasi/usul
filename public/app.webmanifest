@@ -1,0 +1,15 @@
+{
+  "name": "Usûl — Ritmin inceliği",
+  "short_name": "Usûl",
+  "description": "Türk mûsikîsi usûlleri için kaynaklara sadık çalışma uygulaması.",
+  "lang": "tr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#03111d",
+  "theme_color": "#061827",
+  "icons": [
+    { "src": "assets/usul-logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
