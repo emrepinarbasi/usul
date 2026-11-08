@@ -11,6 +11,8 @@ const state = {
   sourceFilter: localStorage.getItem("usul.source") || "all",
   bpm: Number(localStorage.getItem("usul.bpm")) || 80,
   sound: localStorage.getItem("usul.sound") || "kudum",
+  meterTop: Math.min(32, Math.max(1, Number(localStorage.getItem("usul.meterTop")) || 4)),
+  meterBottom: [2, 4, 8, 16, 32].includes(Number(localStorage.getItem("usul.meterBottom"))) ? Number(localStorage.getItem("usul.meterBottom")) : 4,
   gainDb: Number(localStorage.getItem("usul.gain")) || 0,
   reverb: Number(localStorage.getItem("usul.reverb")) || 0,
   glow: Number(localStorage.getItem("usul.glow")) || 55,
@@ -103,6 +105,17 @@ async function loadCatalog() {
 function updateSelectedPattern() {
   const pattern = state.selected;
   if (!pattern) return;
+  if (state.sound === "tiktak") {
+    const meterLabel = `${state.meterTop}/${state.meterBottom}`;
+    $("#pattern-kind").textContent = "Ölçü";
+    $("#selection-kind").textContent = "Tik Tak ölçüsü";
+    $("#selected-pattern-name").textContent = "Tik Tak";
+    $("#pattern-meter").textContent = meterLabel;
+    $("#selection-label").textContent = meterLabel;
+    $("#selection-source").textContent = "Eşit aralıklı metronom";
+    renderNotation();
+    return;
+  }
   const kind = pattern.isVelvele ? "Velvele" : "Ana usûl";
   $("#pattern-kind").textContent = kind;
   $("#selection-kind").textContent = kind;
@@ -361,8 +374,25 @@ function playHit(hit, profile, when, sequenceIndex) {
 }
 
 function currentQueueItem() {
-  if (!audio.queue) return { pattern: state.selected, bpm: state.bpm, sound: state.sound, silent: false, slow: false };
+  if (!audio.queue) return { pattern: state.sound === "tiktak" ? tiktakPattern() : state.selected, bpm: state.bpm, sound: state.sound, silent: false, slow: false };
   return audio.queue[audio.queueIndex] || null;
+}
+
+function tiktakPattern() {
+  const top = clamp(Number(state.meterTop) || 4, 1, 32);
+  return {
+    id: `tiktak-${top}-${state.meterBottom}`,
+    name: "Tik Tak",
+    zaman: top,
+    denominator: state.meterBottom,
+    hits: Array.from({ length: top }, (_, index) => ({
+      sound: index === 0 ? "dum" : "tek",
+      notationLine: index === 0 ? "upper" : "lower",
+      lengthInZaman: 1,
+      notationLengthInZaman: 1,
+      syllable: index === 0 ? "Tik" : "Tak",
+    })),
+  };
 }
 
 function startScheduler() {
@@ -494,6 +524,7 @@ function setSound(sound) {
   updateInstrumentVisual(sound);
   if (sound === "tiktak") $("#notation-card").classList.add("mechanical-mode");
   else $("#notation-card").classList.remove("mechanical-mode");
+  updateSelectedPattern();
 }
 
 function updateInstrumentVisual(sound) {
@@ -651,7 +682,24 @@ function initializeUI() {
     }
   });
   $$(".sound-tabs button").forEach(button => button.addEventListener("click", () => setSound(button.dataset.sound)));
-  $("#open-patterns").addEventListener("click", () => { renderPatternList(); $("#pattern-dialog").showModal(); });
+  $("#open-patterns").addEventListener("click", () => {
+    if (state.sound === "tiktak") {
+      $("#meter-top").value = String(state.meterTop);
+      $("#meter-bottom").value = String(state.meterBottom);
+      $("#meter-dialog").showModal();
+      return;
+    }
+    renderPatternList();
+    $("#pattern-dialog").showModal();
+  });
+  $("#save-meter").addEventListener("click", () => {
+    state.meterTop = clamp(Number($("#meter-top").value) || 4, 1, 32);
+    state.meterBottom = [2, 4, 8, 16, 32].includes(Number($("#meter-bottom").value)) ? Number($("#meter-bottom").value) : 4;
+    localStorage.setItem("usul.meterTop", state.meterTop);
+    localStorage.setItem("usul.meterBottom", state.meterBottom);
+    $("#meter-dialog").close();
+    updateSelectedPattern();
+  });
   $("#pattern-search").addEventListener("input", renderPatternList);
   $$('[data-source]').forEach(button => button.addEventListener("click", () => setSourceFilter(button.dataset.source)));
   $$(".nav-button").forEach(button => button.addEventListener("click", () => switchScreen(button.dataset.screen)));

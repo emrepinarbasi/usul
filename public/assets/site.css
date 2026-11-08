@@ -180,6 +180,12 @@ input[type="number"], input[type="search"], select { width: 100%; min-width: 0; 
 .toast { position: fixed; z-index: 110; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); max-width: calc(100vw - 30px); padding: 10px 16px; opacity: 0; pointer-events: none; transform: translate(-50%, 20px); border: 1px solid var(--line); border-radius: 999px; color: var(--cream); background: rgba(6,24,39,.96); box-shadow: 0 10px 40px rgba(0,0,0,.5); transition: .25s ease; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 noscript { position: fixed; inset: auto 15px 15px; z-index: 120; padding: 12px; background: var(--navy-soft); }
+.meter-dialog { max-width: 520px; }
+.meter-form { min-height: 0; }
+.meter-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 22px; }
+.meter-fields label { display: grid; gap: 8px; color: var(--gold-light); font-weight: 700; }
+.meter-fields input, .meter-fields select { width: 100%; min-height: 48px; padding: 9px 12px; border: 1px solid rgba(215,169,86,.46); border-radius: 12px; color: var(--cream); background: rgba(3,18,30,.72); font: inherit; }
+.meter-form > .primary-button { margin: 0 22px 22px; width: calc(100% - 44px); }
 
 @media (max-width: 1050px) and (min-width: 761px) {
   .control-card { grid-template-columns: 230px 1px minmax(0, 1fr); }
@@ -210,6 +216,7 @@ noscript { position: fixed; inset: auto 15px 15px; z-index: 120; padding: 12px; 
   .notation-card.instrument-mode .instrument-visual { opacity: .96; }
   .notation-card.mechanical-mode .instrument-visual { opacity: .96; }
   .instrument-visual[data-instrument="tiktak"] .instrument-art { width: min(56vw, 250px); height: 94%; }
+  .meter-fields { grid-template-columns: 1fr; }
   .control-card { display: flex; flex-direction: column; gap: 10px; padding: 5px 8px 8px; border: 0; background: transparent; box-shadow: none; }
   .tempo-block { gap: 4px; }
   .tempo-name { font-size: 16px; }

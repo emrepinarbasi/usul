@@ -129,6 +129,16 @@
       <div class="pattern-list" id="pattern-list" role="listbox" aria-label="Usûller"></div>
     </form>
   </dialog>
+  <dialog id="meter-dialog" class="sheet-dialog meter-dialog">
+    <form method="dialog" class="dialog-shell meter-form">
+      <header><div><h2>Tik Tak ölçüsü</h2><p>Eşit aralıklı metronom vuruşlarını ayarlayın.</p></div><button value="cancel" class="dialog-close" aria-label="Kapat">×</button></header>
+      <div class="meter-fields">
+        <label>Vuruş sayısı<input id="meter-top" type="number" min="1" max="32" value="4" inputmode="numeric"></label>
+        <label>Mertebe<select id="meter-bottom"><option value="2">/2</option><option value="4" selected>/4</option><option value="8">/8</option><option value="16">/16</option><option value="32">/32</option></select></label>
+      </div>
+      <button class="primary-button wide" id="save-meter" type="button">Ölçüyü uygula</button>
+    </form>
+  </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript>Bu uygulamanın çalışması için JavaScript etkin olmalıdır. <a href="gizlilik.html">Gizlilik politikası</a></noscript>
 </body>
