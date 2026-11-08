@@ -59,7 +59,37 @@ a { color: var(--gold-light); }
 .notation-heading div { display: grid; }
 .notation-heading span { color: var(--gold); font-size: 11px; font-weight: 700; }
 .notation-heading strong { font: 600 18px/1.15 Georgia, serif; }
-#notation-svg { display: block; width: 100%; height: 100%; overflow: visible; }
+#notation-svg { position: relative; z-index: 2; display: block; width: 100%; height: 100%; overflow: visible; }
+.instrument-visual { position: absolute; inset: 5% 6%; z-index: 1; display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+.notation-card.instrument-mode .instrument-visual { opacity: .96; }
+.notation-card.percussion-mode #notation-svg { opacity: 0; }
+.instrument-art { position: relative; width: min(52vw, 610px); max-width: 92%; max-height: 90%; aspect-ratio: 3 / 2; }
+.instrument-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: brightness(.72) saturate(.86); transition: filter .14s ease, transform .14s ease, opacity .14s ease; }
+.strike-glow { position: absolute; display: block; opacity: 0; border: 3px solid rgba(255, 226, 161, .96); border-radius: 50%; background: radial-gradient(ellipse, rgba(244, 213, 140, .58) 0%, rgba(215, 169, 86, .15) 48%, transparent 73%); box-shadow: 0 0 34px rgba(244, 213, 140, .72), inset 0 0 22px rgba(244, 213, 140, .44); transform: translate(-50%, -50%) scale(.78); }
+.strike-tek { left: 24%; top: 39%; width: 34%; height: 32%; }
+.strike-dum { left: 72%; top: 35%; width: 44%; height: 40%; }
+.strike-ring { left: 52%; top: 45%; width: 74%; height: 53%; border-width: 4px; }
+.instrument-visual[data-instrument="kudum"] .strike-ring,
+.instrument-visual[data-instrument="bendir"] .strike-tek,
+.instrument-visual[data-instrument="bendir"] .strike-dum { display: none; }
+.tick-pendulum { display: none; position: absolute; left: 51%; bottom: 31%; width: 5px; height: 54%; border-radius: 999px; background: linear-gradient(90deg, #b47a27, #ffe7a5 48%, #8d5a17); box-shadow: 0 0 8px rgba(244, 213, 140, .58); transform: translateX(-50%) rotate(0deg); transform-origin: 50% 100%; transition: transform var(--swing-duration, 360ms) linear; }
+.tick-pendulum b { position: absolute; top: 38%; left: 50%; width: 30px; height: 15px; border: 2px solid #f4d58c; border-radius: 3px; background: #8e531b; box-shadow: 0 0 10px rgba(244, 213, 140, .5); transform: translate(-50%, -50%); }
+.instrument-visual[data-instrument="tiktak"] .instrument-art { width: min(29vw, 360px); height: 92%; aspect-ratio: 5 / 6; }
+.instrument-visual[data-instrument="tiktak"] .instrument-art img { filter: brightness(.9) saturate(.95); }
+.instrument-visual[data-instrument="tiktak"] .strike-glow { display: none; }
+.instrument-visual[data-instrument="tiktak"] .tick-pendulum { display: block; }
+.notation-card.mechanical-mode .instrument-visual { opacity: .96; }
+.notation-card.mechanical-mode #notation-svg { opacity: 0; }
+.notation-card.tick-left .tick-pendulum { transform: translateX(-50%) rotate(-21deg); }
+.notation-card.tick-right .tick-pendulum { transform: translateX(-50%) rotate(21deg); }
+.notation-card.instrument-strike .instrument-art img { filter: brightness(.92) saturate(1); animation: instrument-pulse .24s ease-out; }
+.notation-card.instrument-strike .instrument-visual[data-instrument="kudum"][data-stroke="tek"] .strike-tek,
+.notation-card.instrument-strike .instrument-visual[data-instrument="kudum"][data-stroke="dum"] .strike-dum,
+.notation-card.instrument-strike .instrument-visual[data-instrument="kudum"][data-stroke="both"] .strike-tek,
+.notation-card.instrument-strike .instrument-visual[data-instrument="kudum"][data-stroke="both"] .strike-dum,
+.notation-card.instrument-strike .instrument-visual[data-instrument="bendir"] .strike-ring { animation: strike-wave .36s ease-out; }
+@keyframes instrument-pulse { 0% { transform: scale(.985); } 48% { transform: scale(1.025); } 100% { transform: scale(1); } }
+@keyframes strike-wave { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.72); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.12); } }
 .catalog-loading { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--muted); background: rgba(4, 21, 34, .9); }
 .catalog-loading.hidden { display: none; }
 .loading-mark { width: 18px; height: 18px; border: 2px solid rgba(215,169,86,.26); border-top-color: var(--gold-light); border-radius: 50%; animation: spin .8s linear infinite; }
@@ -175,6 +205,11 @@ noscript { position: fixed; inset: auto 15px 15px; z-index: 120; padding: 12px; 
   .notation-heading { display: flex; top: 8px; left: 13px; right: 13px; opacity: .92; }
   .notation-heading strong { font-size: 15px; }
   #notation-svg { padding-top: 26px; }
+  .instrument-visual { inset: 12% 2% 4%; }
+  .instrument-art { width: min(86vw, 430px); max-width: 96%; opacity: .92; }
+  .notation-card.instrument-mode .instrument-visual { opacity: .96; }
+  .notation-card.mechanical-mode .instrument-visual { opacity: .96; }
+  .instrument-visual[data-instrument="tiktak"] .instrument-art { width: min(56vw, 250px); height: 94%; }
   .control-card { display: flex; flex-direction: column; gap: 10px; padding: 5px 8px 8px; border: 0; background: transparent; box-shadow: none; }
   .tempo-block { gap: 4px; }
   .tempo-name { font-size: 16px; }

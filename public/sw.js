@@ -1,4 +1,4 @@
-const CACHE_NAME = "usul-web-v2";
+const CACHE_NAME = "usul-web-v4";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -7,6 +7,9 @@ const APP_SHELL = [
   "/assets/site.js",
   "/assets/usul-logo.png",
   "/assets/usul-background.png",
+  "/assets/kudum-pair.png",
+  "/assets/bendir.png",
+  "/assets/wood-metronome.png",
   "/assets/audio/kudum_dum.wav",
   "/assets/audio/kudum_tek.wav",
   "/assets/audio/bendir_dum.wav",

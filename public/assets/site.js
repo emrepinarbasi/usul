@@ -32,6 +32,8 @@ const audio = {
   playing: false,
   schedulerId: 0,
   visualTimers: new Set(),
+  instrumentTimer: 0,
+  tickSide: -1,
   nextTime: 0,
   hitIndex: 0,
   cycleIndex: 0,
@@ -379,7 +381,7 @@ function scheduleAhead() {
     const progress = pattern.hits.length > 1 ? audio.hitIndex / (pattern.hits.length - 1) : 0;
     const bpm = item.slow ? item.bpm * (1 - progress * .28) : item.bpm;
     if (!item.silent) playHit(hit, item.sound, audio.nextTime, audio.hitIndex);
-    scheduleVisual(pattern, audio.hitIndex, audio.nextTime, Number(hit.lengthInZaman), item.silent);
+    scheduleVisual(pattern, audio.hitIndex, audio.nextTime, Number(hit.lengthInZaman), item.silent, item.sound);
     audio.nextTime += 60 / clamp(bpm, 20, 600) * Number(hit.lengthInZaman);
     audio.hitIndex += 1;
     if (audio.hitIndex >= pattern.hits.length) {
@@ -392,7 +394,7 @@ function scheduleAhead() {
   }
 }
 
-function scheduleVisual(pattern, hitIndex, when, length, silent) {
+function scheduleVisual(pattern, hitIndex, when, length, silent, profile) {
   const delay = Math.max(0, (when - audio.context.currentTime) * 1000);
   const timer = setTimeout(() => {
     audio.visualTimers.delete(timer);
@@ -404,6 +406,7 @@ function scheduleVisual(pattern, hitIndex, when, length, silent) {
     state.activeHit = hitIndex;
     renderNotation();
     if (!silent) {
+      animateInstrument(pattern.hits[hitIndex], profile);
       const card = $("#notation-card");
       card.classList.remove("hit-glow");
       void card.offsetWidth;
@@ -430,6 +433,7 @@ async function startPlayback(queue = null) {
   audio.queueIndex = 0;
   audio.hitIndex = 0;
   audio.cycleIndex = 0;
+  audio.tickSide = -1;
   audio.nextTime = audio.context.currentTime + .07;
   setPlayingUI(true);
   startScheduler();
@@ -442,6 +446,10 @@ function stopPlayback(showToast = false) {
   for (const timer of audio.visualTimers) clearTimeout(timer);
   audio.visualTimers.clear();
   audio.queue = null;
+  clearTimeout(audio.instrumentTimer);
+  audio.instrumentTimer = 0;
+  $("#notation-card")?.classList.remove("instrument-strike");
+  $("#notation-card")?.classList.remove("tick-left", "tick-right");
   state.activeHit = -1;
   renderNotation();
   setPlayingUI(false);
@@ -483,8 +491,47 @@ function setSound(sound) {
   state.sound = sound;
   localStorage.setItem("usul.sound", sound);
   $$(".sound-tabs button").forEach(button => button.classList.toggle("selected", button.dataset.sound === sound));
+  updateInstrumentVisual(sound);
   if (sound === "tiktak") $("#notation-card").classList.add("mechanical-mode");
   else $("#notation-card").classList.remove("mechanical-mode");
+}
+
+function updateInstrumentVisual(sound) {
+  const card = $("#notation-card");
+  const visual = $("#instrument-visual");
+  const image = $("#instrument-image");
+  if (!card || !visual || !image) return;
+  const instrument = sound === "bendir" ? "bendir" : (sound === "kudum" ? "kudum" : (sound === "tiktak" ? "tiktak" : ""));
+  card.classList.toggle("instrument-mode", Boolean(instrument));
+  card.classList.toggle("percussion-mode", instrument === "kudum" || instrument === "bendir");
+  visual.dataset.instrument = instrument || "none";
+  visual.dataset.stroke = "";
+  if (instrument === "kudum") image.src = "assets/kudum-pair.png";
+  if (instrument === "bendir") image.src = "assets/bendir.png";
+  if (instrument === "tiktak") image.src = "assets/wood-metronome.png";
+  if (instrument !== "tiktak") card.classList.remove("tick-left", "tick-right");
+}
+
+function animateInstrument(hit, profile) {
+  const card = $("#notation-card");
+  const visual = $("#instrument-visual");
+  if (!card || !visual || !["kudum", "bendir", "tiktak"].includes(profile)) return;
+  if (state.sound !== profile) setSound(profile);
+  if (profile === "tiktak") {
+    audio.tickSide *= -1;
+    card.style.setProperty("--swing-duration", `${clamp(60000 / state.bpm * .82, 90, 720)}ms`);
+    card.classList.toggle("tick-left", audio.tickSide < 0);
+    card.classList.toggle("tick-right", audio.tickSide > 0);
+    return;
+  }
+  const rawStroke = hit?.sound === "dum" || hit?.sound === "both" ? hit.sound : "tek";
+  const stroke = profile === "bendir" && rawStroke === "both" ? "tek" : rawStroke;
+  visual.dataset.stroke = stroke;
+  card.classList.remove("instrument-strike");
+  void visual.offsetWidth;
+  card.classList.add("instrument-strike");
+  clearTimeout(audio.instrumentTimer);
+  audio.instrumentTimer = setTimeout(() => card.classList.remove("instrument-strike"), 380);
 }
 
 function setSourceFilter(source) {
